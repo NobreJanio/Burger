@@ -4,6 +4,7 @@ import User from '../app/models/User'
 
 import configDatabase from '../config/database'
 
+// para  criar a conexão com o banco de dados, precisamos instanciar a class do sequelize passando como parâmetro as informações da nossa base de dados
 const models = [User]
 
 class Database {

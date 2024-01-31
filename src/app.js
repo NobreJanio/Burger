@@ -2,6 +2,7 @@ import express from 'express'
 import routes from './routes'
 import './database'
 
+// para  o express entender json no body da requisição.
 class App {
   constructor() {
     this.app = express()
