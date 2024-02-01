@@ -1,47 +1,54 @@
 'use strict'
 
 /** @type {import('sequelize-cli').Migration} */
-
-// para criar um usuario comum, sem admin ou superadmin
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('users', {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable('products', {
       id: {
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
+        type: Sequelize.INTEGER,
         allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
       },
+
       name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      email: {
+
+      price: {
+        type: Sequelize.DECIMAL(10, 2),
+        allowNull: false,
+      },
+
+      category: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
       },
-      password_hash: {
+
+      path: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      admin: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
-        allowNull: false,
+
+      image: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
+        storage: 'public',
+        parse: Sequelize.ARRAY(Sequelize.TEXT),
       },
-      created_at: {
+
+      createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      updated_at: {
+      updatedAt: {
         type: Sequelize.DATE,
         allowNull: false,
       },
     })
   },
-  // para  voltar atras e remover a tabela acima, caso de erro
+
   down: async (queryInterface) => {
-    await queryInterface.dropTable('users')
+    await queryInterface.dropTable('products')
   },
 }
