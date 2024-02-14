@@ -1,4 +1,6 @@
 import * as Yup from 'yup'
+import jwt from 'jsonwebtoken'
+import authConfig from '../../config/auth'
 import User from '../models/User'
 
 // para fazer  o login, precisamos de um usuário e uma senha.
@@ -39,6 +41,9 @@ class SessionController {
       name: user.name,
       email,
       admin: user.admin,
+      token: jwt.sign({ id: user.id }, authConfig.secret, {
+        expiresIn: authConfig.expiresIn,
+      }),
     })
   }
 }
