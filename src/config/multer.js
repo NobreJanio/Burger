@@ -6,8 +6,10 @@ export default {
   storage: multer.diskStorage({
     // Cria uma pasta temporária para armazenar os arquivos enviados pelo usuário
     destination: resolve(__dirname, '..', '..', 'uploads'),
-    filename: (request, file, callback) => {
-      return callback(null, v4() + extname(file.originalname))
+
+    // Define como o nome do arquivo será salvo
+    filename: (request, file, cb) => {
+      return cb(null, v4() + extname(file.originalname))
     },
   }),
 }
