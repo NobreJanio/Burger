@@ -1,6 +1,7 @@
 import express from 'express'
 import routes from './routes'
 import { resolve } from 'path'
+
 import './database'
 
 // para  o express entender json no body da requisição.

@@ -1,4 +1,5 @@
 import Sequelize, { Model } from 'sequelize'
+import Category from './Category'
 
 // para  criar a modelagem de um banco de dados relacional.
 class Product extends Model {
